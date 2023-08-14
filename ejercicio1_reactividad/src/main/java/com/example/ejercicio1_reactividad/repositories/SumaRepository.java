@@ -8,8 +8,6 @@ import java.util.Date;
 
 public interface SumaRepository extends ReactiveCrudRepository<Suma, Date> {
 
-    Flux<Suma> findAllByFechaContaining(String fechaInicio, String fechaFin);
     Flux<Suma> findAllByFechaBetween(String fechaInicio, String fechaFin);
-    Flux<Suma> findAllByFecha(String fecha);
 
 }

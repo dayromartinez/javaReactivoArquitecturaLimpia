@@ -38,14 +38,15 @@ public class GetSumasUseCase implements BiFunction<String, String, Flux<SumaDto>
         LocalDate fechaFinDate = LocalDate.parse(fechaFin, formatter);
 
 
-        return sumaRepository.findAll()
-                .doOnNext(info -> log.info("Fecha inicio: " + fechaInicioDate.toString() + " Fecha fin: " + fechaFinDate.toString()))
-                .filter(fechaSuma -> {
+        return sumaRepository.findAllByFechaBetween(fechaInicio, fechaFin)
+                //.doOnNext(info -> log.info("Fecha inicio: " + fechaInicioDate.toString() + " Fecha fin: " + fechaFinDate.toString()))
+                /*.filter(fechaSuma -> {
                     LocalDate fechaSumaDate = LocalDate.parse(fechaSuma.getFecha(), formatter);
                     log.info(fechaSumaDate.toString(), fechaFinDate.toString());
                     log.info(String.format("El resultado de esta evaluación arrojó: %b", fechaSumaDate.isAfter(fechaInicioDate) && fechaSumaDate.isBefore(fechaFinDate)));
                     return fechaSumaDate.isAfter(fechaInicioDate) && fechaSumaDate.isBefore(fechaFinDate);
-                })
+                })*/
+
                 .map(mapperUtils.mapperEntityToSuma())
                 .switchIfEmpty(Flux.error(new ResponseStatusException(HttpStatus.NOT_FOUND)));
     }
