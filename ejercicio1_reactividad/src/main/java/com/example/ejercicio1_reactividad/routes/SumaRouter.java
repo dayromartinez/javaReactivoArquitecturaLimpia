@@ -21,11 +21,11 @@ public class SumaRouter {
 
     @Bean
     public RouterFunction<ServerResponse> getSumas(GetSumasUseCase getSumasUseCase) {
-        return route(GET("/buscarSumas/{fechaInicio}/{fechaFin}").and(accept(MediaType.APPLICATION_JSON)),
+        return route(GET("/buscarSumas").and(accept(MediaType.APPLICATION_JSON)),
                 request -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(BodyInserters.fromPublisher(getSumasUseCase
-                                .apply(request.pathVariable("fechaInicio"), request.pathVariable("fechaFin")), SumaDto.class
+                                .apply(request.queryParam("fechaInicio").get(), request.queryParam("fechaFin").get()), SumaDto.class
                         ))
                 );
     }
