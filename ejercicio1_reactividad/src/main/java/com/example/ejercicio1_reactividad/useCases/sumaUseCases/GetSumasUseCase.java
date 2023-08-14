@@ -33,9 +33,9 @@ public class GetSumasUseCase implements BiFunction<String, String, Flux<SumaDto>
     @Override
     public Flux<SumaDto> apply(String fechaInicio, String fechaFin) {
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        /*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate fechaInicioDate = LocalDate.parse(fechaInicio, formatter);
-        LocalDate fechaFinDate = LocalDate.parse(fechaFin, formatter);
+        LocalDate fechaFinDate = LocalDate.parse(fechaFin, formatter);*/
 
 
         return sumaRepository.findAllByFechaBetween(fechaInicio, fechaFin)
@@ -46,7 +46,6 @@ public class GetSumasUseCase implements BiFunction<String, String, Flux<SumaDto>
                     log.info(String.format("El resultado de esta evaluación arrojó: %b", fechaSumaDate.isAfter(fechaInicioDate) && fechaSumaDate.isBefore(fechaFinDate)));
                     return fechaSumaDate.isAfter(fechaInicioDate) && fechaSumaDate.isBefore(fechaFinDate);
                 })*/
-
                 .map(mapperUtils.mapperEntityToSuma())
                 .switchIfEmpty(Flux.error(new ResponseStatusException(HttpStatus.NOT_FOUND)));
     }
