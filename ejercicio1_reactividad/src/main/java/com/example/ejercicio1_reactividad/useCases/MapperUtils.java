@@ -27,7 +27,7 @@ public class MapperUtils {
         return entity -> new SumaDto(
                 entity.getId(),
                 entity.getNumeroUno(),
-                entity.getNumeroUno(),
+                entity.getNumeroDos(),
                 entity.getResultado(),
                 entity.getFecha()
         );
