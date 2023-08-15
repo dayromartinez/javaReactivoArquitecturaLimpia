@@ -1,17 +1,20 @@
 package com.example.ejercicio1_reactividad.dto;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.Objects;
 
 public class SumaDto {
 
     private String id;
-    private int numeroUno;
-    private int numeroDos;
-    private int resultado;
+    @NotNull
+    private double numeroUno;
+    @NotNull
+    private double numeroDos;
+    private double resultado;
     private String fecha;
 
-    public SumaDto(String id, int numeroUno, int numeroDos, int resultado, String fecha) {
+    public SumaDto(String id, double numeroUno, double numeroDos, double resultado, String fecha) {
         this.id = id;
         this.numeroUno = numeroUno;
         this.numeroDos = numeroDos;
@@ -27,27 +30,27 @@ public class SumaDto {
         this.id = id;
     }
 
-    public int getNumeroUno() {
+    public double getNumeroUno() {
         return numeroUno;
     }
 
-    public void setNumeroUno(int numeroUno) {
+    public void setNumeroUno(double numeroUno) {
         this.numeroUno = numeroUno;
     }
 
-    public int getNumeroDos() {
+    public double getNumeroDos() {
         return numeroDos;
     }
 
-    public void setNumeroDos(int numeroDos) {
+    public void setNumeroDos(double numeroDos) {
         this.numeroDos = numeroDos;
     }
 
-    public int getResultado() {
+    public double getResultado() {
         return resultado;
     }
 
-    public void setResultado(int resultado) {
+    public void setResultado(double resultado) {
         this.resultado = resultado;
     }
 

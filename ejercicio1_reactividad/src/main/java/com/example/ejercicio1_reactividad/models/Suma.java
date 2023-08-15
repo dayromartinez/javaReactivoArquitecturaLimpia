@@ -10,9 +10,9 @@ public class Suma {
 
     @Id
     private String id;
-    private int numeroUno;
-    private int numeroDos;
-    private int resultado;
+    private double numeroUno;
+    private double numeroDos;
+    private double resultado;
     private String fecha;
 
     public String getId() {
@@ -23,27 +23,27 @@ public class Suma {
         this.id = id;
     }
 
-    public int getNumeroUno() {
+    public double getNumeroUno() {
         return numeroUno;
     }
 
-    public void setNumeroUno(int numeroUno) {
+    public void setNumeroUno(double numeroUno) {
         this.numeroUno = numeroUno;
     }
 
-    public int getNumeroDos() {
+    public double getNumeroDos() {
         return numeroDos;
     }
 
-    public void setNumeroDos(int numeroDos) {
+    public void setNumeroDos(double numeroDos) {
         this.numeroDos = numeroDos;
     }
 
-    public int getResultado() {
+    public double getResultado() {
         return resultado;
     }
 
-    public void setResultado(int resultado) {
+    public void setResultado(double resultado) {
         this.resultado = resultado;
     }
 

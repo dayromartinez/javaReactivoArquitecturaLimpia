@@ -10,7 +10,6 @@ import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 
 
 @Service
@@ -30,7 +29,7 @@ public class CrearSumaUseCase implements SaveSuma {
 
         LocalDateTime fechaYHora = LocalDateTime.now();
         DateTimeFormatter isoFecha = DateTimeFormatter.ISO_LOCAL_DATE;
-        String fechaConvertida = fechaYHora.format(isoFecha).toString();
+        String fechaConvertida = fechaYHora.format(isoFecha);
         sumaDto.setFecha(fechaConvertida);
 
         var resultado = sumaDto.getNumeroUno() + sumaDto.getNumeroDos();
@@ -38,6 +37,6 @@ public class CrearSumaUseCase implements SaveSuma {
 
         return sumaRepository.save(
                 mapperUtils.mapperToSuma(null).apply(sumaDto))
-                .thenReturn("Suma procesada y almacenada exitosamente");
+                .thenReturn(String.format("Suma procesada y almacenada exitosamente. El resultado de esta es: %f", resultado));
     }
 }
